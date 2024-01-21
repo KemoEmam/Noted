@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
-
+  const CustomButton(
+      {super.key, required this.text, required this.buttonColor});
+  final String text;
+  final Color buttonColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,13 +12,12 @@ class CustomButton extends StatelessWidget {
       height: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: kPrimaryColor,
+        color: buttonColor,
       ),
-      child: const Center(
+      child: Center(
         child: Text(
-          'Add',
-          style: TextStyle(
-              color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+          text,
+          style: const TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
     );

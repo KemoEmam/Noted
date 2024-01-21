@@ -16,14 +16,12 @@ class AddNoteBottomSheet extends StatelessWidget {
             CustomTextField(
                 borderColor: Colors.white.withOpacity(.7),
                 hintText: 'Title',
-                cursorColor: kPrimaryColor,
                 focusedBorderColor: kPrimaryColor,
                 textColor: Colors.grey),
             const SizedBox(height: 16),
             CustomTextField(
               borderColor: Colors.white.withOpacity(.7),
               hintText: 'Content',
-              cursorColor: kPrimaryColor,
               focusedBorderColor: kPrimaryColor,
               textColor: Colors.grey,
               maxLines: 5,

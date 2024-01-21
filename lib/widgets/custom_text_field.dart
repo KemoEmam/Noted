@@ -8,31 +8,31 @@ class CustomTextField extends StatelessWidget {
       this.onChanged,
       this.obscureText = false,
       required this.hintText,
-      required this.cursorColor,
-      required this.textColor,
+      this.cursorColor,
+      this.textColor,
       required this.focusedBorderColor,
       this.maxLines = 1});
   final String hintText;
   final bool? obscureText;
   final Function(String)? onChanged;
   final Color borderColor;
-  final Color textColor;
+  final Color? textColor;
   final Color focusedBorderColor;
-  final Color cursorColor;
+  final Color? cursorColor;
   final TextInputType? textInputType;
   final int maxLines;
   @override
   Widget build(BuildContext context) {
     return TextField(
       maxLines: maxLines,
-      cursorColor: cursorColor,
+      cursorColor: cursorColor ?? focusedBorderColor,
       keyboardType: textInputType,
       obscureText: obscureText!,
-      style: TextStyle(color: textColor),
+      style: TextStyle(color: textColor ?? borderColor),
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: borderColor),
         border: borderBuilder(),
         enabledBorder: borderBuilder(borderColor),
         focusedBorder: borderBuilder(focusedBorderColor),

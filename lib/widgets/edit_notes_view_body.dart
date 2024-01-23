@@ -23,10 +23,18 @@ class EditNotesViewBody extends StatelessWidget {
             height: 50,
           ),
           CustomTextField(
-              borderColor: Colors.white.withOpacity(.7),
-              hintText: 'Title',
-              focusedBorderColor: kPrimaryColor,
-              textColor: Colors.grey),
+            borderColor: Colors.white.withOpacity(.7),
+            hintText: 'Title',
+            focusedBorderColor: kPrimaryColor,
+            textColor: Colors.grey,
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Field is required!';
+              } else {
+                return null;
+              }
+            },
+          ),
           const SizedBox(
             height: 16,
           ),
@@ -36,6 +44,13 @@ class EditNotesViewBody extends StatelessWidget {
             focusedBorderColor: kPrimaryColor,
             textColor: Colors.grey,
             maxLines: 5,
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Field is required!';
+              } else {
+                return null;
+              }
+            },
           ),
         ],
       ),

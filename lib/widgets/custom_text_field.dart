@@ -11,7 +11,9 @@ class CustomTextField extends StatelessWidget {
       this.cursorColor,
       this.textColor,
       required this.focusedBorderColor,
-      this.maxLines = 1});
+      this.maxLines = 1,
+      this.onSaved,
+      required this.validator});
   final String hintText;
   final bool? obscureText;
   final Function(String)? onChanged;
@@ -21,9 +23,13 @@ class CustomTextField extends StatelessWidget {
   final Color? cursorColor;
   final TextInputType? textInputType;
   final int maxLines;
+  final void Function(String?)? onSaved;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onSaved,
+      validator: validator,
       maxLines: maxLines,
       cursorColor: cursorColor ?? focusedBorderColor,
       keyboardType: textInputType,

@@ -37,34 +37,20 @@ class _AddNoteFormState extends State<AddNoteForm> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          CustomTextField(
+          CustomTextFormField(
             borderColor: Colors.white.withOpacity(.7),
             hintText: 'Title',
             focusedBorderColor: kPrimaryColor,
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Field is required!';
-              } else {
-                return null;
-              }
-            },
             onSaved: (value) {
               value = title;
             },
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomTextFormField(
             borderColor: Colors.white.withOpacity(.7),
             hintText: 'Content',
             focusedBorderColor: kPrimaryColor,
             maxLines: 5,
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Field is required!';
-              } else {
-                return null;
-              }
-            },
             onSaved: (value) {
               value = subTitle;
             },

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/models/notes_model.dart';
 import 'package:notes_app/widgets/constants.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
+import 'package:notes_app/widgets/notes_list_view.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -28,7 +32,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hintText: 'Title',
             focusedBorderColor: kPrimaryColor,
             onSaved: (value) {
-              value = title;
+              title = value;
             },
           ),
           const SizedBox(height: 16),
@@ -38,7 +42,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             focusedBorderColor: kPrimaryColor,
             maxLines: 5,
             onSaved: (value) {
-              value = subTitle;
+              subTitle = value;
             },
           ),
           const SizedBox(
@@ -50,6 +54,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
+                var noteModel = NotesModel(
+                    title: title!,
+                    subTitle: subTitle!,
+                    date: DateTime.now().toString(),
+                    color: const NotesListView().noteColors.length);
+                BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

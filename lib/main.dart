@@ -10,9 +10,11 @@ import 'package:notes_app/widgets/constants.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox(kNotesBox);
   Hive.registerAdapter(NotesModelAdapter());
+  await Hive.openBox<NotesModel>(kNotesBox);
   Bloc.observer = SimpleBlocObserver();
+
+  runApp(const NotesApp());
 }
 
 class NotesApp extends StatelessWidget {
@@ -29,7 +31,7 @@ class NotesApp extends StatelessWidget {
           EditNotesView.id: (context) => const EditNotesView()
         },
         theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-        initialRoute: NotesView.id,
+        home: const NotesView(),
       ),
     );
   }

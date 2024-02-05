@@ -4,23 +4,26 @@ import 'package:notes_app/cubit/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/notes_model.dart';
 import 'package:notes_app/widgets/custom_note_item.dart';
 
-class NotesListView extends StatelessWidget {
+class NotesListView extends StatefulWidget {
   const NotesListView({super.key});
 
-  final List<Color> noteColors = const [
-    Color(0xFFFFCB7A),
-    Color(0xFFE7E896),
-    Color(0xFF76D6EE),
-    Color(0xFFD4A1DB),
-    Color(0xFFFF8183),
-  ];
+  @override
+  State<NotesListView> createState() => _NotesListViewState();
+}
+
+class _NotesListViewState extends State<NotesListView> {
+  @override
+  void initState() {
+    super.initState();
+    // Dispatch the fetch event when the widget is initialized
+    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-        List<NotesModel> notes =
-            BlocProvider.of<NotesCubit>(context).notes ?? [];
+        List<NotesModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: ListView.builder(
@@ -30,7 +33,7 @@ class NotesListView extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: NoteItem(
-                    color: noteColors[index % noteColors.length],
+                    note: notes[index],
                   ),
                 );
               }),

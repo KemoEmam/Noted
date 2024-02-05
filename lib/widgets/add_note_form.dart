@@ -5,7 +5,6 @@ import 'package:notes_app/models/notes_model.dart';
 import 'package:notes_app/widgets/constants.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
-import 'package:notes_app/widgets/notes_list_view.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -58,10 +57,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var noteModel = NotesModel(
-                        title: title!,
-                        subTitle: subTitle!,
-                        date: DateTime.now().toString(),
-                        color: const NotesListView().noteColors.length);
+                      color: Colors.blue.value,
+                      title: title!,
+                      subTitle: subTitle!,
+                      date: DateTime.now().toString(),
+                    );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;

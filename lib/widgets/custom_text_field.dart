@@ -7,14 +7,15 @@ class CustomTextFormField extends StatelessWidget {
       this.textInputType,
       this.onChanged,
       this.obscureText = false,
-      required this.hintText,
+      this.hintText,
       this.cursorColor,
       this.textColor,
       required this.focusedBorderColor,
       this.maxLines = 1,
       this.onSaved,
-      this.validator});
-  final String hintText;
+      this.validator,
+      this.controller});
+  final String? hintText;
   final bool? obscureText;
   final Function(String)? onChanged;
   final Color borderColor;
@@ -23,11 +24,13 @@ class CustomTextFormField extends StatelessWidget {
   final Color? cursorColor;
   final TextInputType? textInputType;
   final int maxLines;
-  final void Function(String?)? onSaved;
+  final Function(String?)? onSaved;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       onSaved: onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {

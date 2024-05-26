@@ -12,7 +12,7 @@ Noted is a notes app that is capable of capturing all your thoughts and ideas th
 ## Screenshots
 
 ### Screenshot 1
-<img src="https://github.com/KemoEmam/Noted/assets/122459156/d630115c-ad0c-4765-895a-6c04215e4a31" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/KemoEmam/Noted/assets/122459156/d630115c-ad0c-4765-895a-6c04215e4a31" alt="Screenshot 1" width="450"/>
 
 ### Screenshot 2
 <img src="https://github.com/KemoEmam/Noted/assets/122459156/4c462cf7-9971-46e7-b2ab-c6aaa0f94969" alt="Screenshot 2" width="450"/>
